@@ -1,35 +1,35 @@
 ===================================================================================
-• isalpha 																			+C02_ex02+++
+• isalpha 											
 checks  for an alphabetic character; in the standard "C" locale,
               it is equivalent to (isupper(c) ||  islower(c)).   In  some  lo‐
               cales, there may be additional characters for which isalpha() is
               true—letters which are neither uppercase nor lowercase.
 
 ===================================================================================         
-• isdigit 																			+C02_ex03+++
+• isdigit 											
 checks for a digit (0 through 9).
 
 ===================================================================================
-• isalnum																					 +++
+• isalnum											
 checks for an alphanumeric character; it is equivalent to (isal‐
               pha(c) || isdigit(c)).
 
 ===================================================================================            
-• isascii																					+++
+• isascii											
 checks whether c is a 7-bit unsigned char value that  fits  into
               the ASCII character set.
 
 ===================================================================================
-• isprint 																			+C02_ex06+++
+• isprint 											
 checks for any printable character including space.
 
 ===================================================================================
-• strlen 																			+C01_ex06+++
+• strlen 											
 The strlen() function calculates the length of the string pointed to by
        s, excluding the terminating null byte ('\0').
        
 ===================================================================================
-• memset																					???
+• memset											
 NAME
        memset - fill memory with a constant byte
 
@@ -110,7 +110,7 @@ RETURN VALUE
        The memmove() function returns a pointer to dest.
 
 ===================================================================================
-• strlcpy				C02_ex10						<--------+++
+• strlcpy				C02_ex10						
 NAME
      strlcpy, strlcat — size-bounded string copying and concatenation
 
@@ -162,7 +162,7 @@ RETURN VALUES
      vent potential security problems in incorrect code.
 
 ===================================================================================
-• strlcat			C03_ex05																<--------+++
+• strlcat			C03_ex05							
 NAME
      strlcpy, strlcat — size-bounded string copying and concatenation
 
@@ -213,15 +213,15 @@ RETURN VALUES
      rect or that dst is not a proper “C” string).  The check exists to pre‐
      vent potential security problems in incorrect code.
 ===================================================================================
-• toupper +C02_ex07																	<--------+++
+• toupper +C02_ex07										
 These functions convert lowercase letters to uppercase.
 
 ===================================================================================
-• tolower +C02_ex08																	<--------+++
+• tolower +C02_ex08										
 These functions convert uppercase letters to lowercase.
 
 ===================================================================================
-• strchr													           				<--------
+• strchr											
 • strrchr	
 SYNOPSIS
        #include <string.h>
@@ -246,7 +246,7 @@ RETURN VALUE
        byte is considered part of the string, so that if  c  is  specified  as
        '\0', these functions return a pointer to the terminator.
 ===================================================================================
-• strncmp +C03													           			<--------
+• strncmp +C03										
 
 ===================================================================================
 • memchr
@@ -255,15 +255,15 @@ RETURN VALUE
 • memcmp
 
 ===================================================================================
-• strnstr													           				<--------
+• strnstr											
 
 ===================================================================================
-• atoi +C04_ex03													         		<--------
+• atoi +C04_ex03										
 
 ===================================================================================
 malloc():
-• calloc															         		<--------
-• strdup															         		<--------
+• calloc											
+• strdup											
 ===================================================================================
 additional functions:
 ===================================================================================
