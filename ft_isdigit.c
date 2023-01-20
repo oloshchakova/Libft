@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_numeric.c                                :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oloshcha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/23 13:38:43 by oloshcha          #+#    #+#             */
-/*   Updated: 2022/11/23 13:38:56 by oloshcha         ###   ########.fr       */
+/*   Created: 2023/01/20 18:51:43 by oloshcha          #+#    #+#             */
+/*   Updated: 2023/01/20 18:51:46 by oloshcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isdigit(char *str)
+int	ft_isdigit(int c)
 {
-	int	i;
-
-	i = 0;
-	if (!str[i])
+	if (c >= 48 && c <= 57)
 		return (1);
-	while (str[i])
-	{
-		if (str[i] >= 48 && str[i] <= 57)
-			i++;
-		else
-			return (0);
-	}
-	return (1);
+	else
+		return (0);
 }

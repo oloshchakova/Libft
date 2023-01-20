@@ -22,16 +22,18 @@ char  *ft_strchr(const char *s, int c)
     i++;
       
   }
-  return ();
+  return (0);
 }
 
 char    *ft_strtrim(char const *s, char const *set)
 {
     int    i;
+    int	j;
     char *res;
 
     i = 0;
-    if (s == '\0' || set == '\0' || (res = malloc(strlen(s))) == 0)
+    j = 0;
+    if (*s == '\0' || *set == '\0' || (res = (char *)malloc(strlen(s) * sizeof(char))))
         return (0);
     while (*s)
     {
@@ -46,11 +48,14 @@ char    *ft_strtrim(char const *s, char const *set)
     }
     i = strlen(s);
     while (i > 0 && s[i] == set[j])
+    {
         i--;
+    }
 }
 
+/*
 int main() {
 
   printf("%s", ft_strtrim("aachiacb", "abc"));
   return 0;
-}
+}*/

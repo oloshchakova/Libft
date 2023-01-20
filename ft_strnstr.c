@@ -9,11 +9,12 @@
 /*   Updated: 2023/01/18 19:31:28 by oloshcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
 char	ft_strnstr(const char *s1, const char *s2, size_t n)
 {
-	int	i;
-	int	j;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
 	if (s1[i])
@@ -27,5 +28,5 @@ char	ft_strnstr(const char *s1, const char *s2, size_t n)
 		}
 		i++;
 	}
-	return (s[i]);
+	return (s1[i]);
 }

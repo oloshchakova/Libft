@@ -9,15 +9,14 @@
 /*   Updated: 2023/01/18 19:33:14 by oloshcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "libft.h"
 
 void *memcpy(void *dest, const void *src, size_t n)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	while (*src && i < n)
+	while ((src[i] != '\0') && (i < n))
 	{
 		dest[i] = src[i];
 		i++;

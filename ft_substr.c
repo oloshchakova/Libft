@@ -9,13 +9,15 @@
 /*   Updated: 2023/01/18 19:43:42 by oloshcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*res;
-	int	i;
+	int		i;
 
-	if (s == '\0' || !(res = malloc(len)))
+	res = (char *)malloc(len);
+	if (*s == '\0' || !(res))
 		return (0);
 	i = 0;
 	while (s[i])

@@ -9,14 +9,16 @@
 /*   Updated: 2023/01/18 19:34:33 by oloshcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*res;
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
-	if (!(*s1) || !(*s2) || !(res = malloc(ft_strlen(s1) + ft_strlen(s2) + 1)))
+	res = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (!(*s1) || !(*s2) || !(res))
 		return (0);
 	i = 0;
 	while (s1[i])

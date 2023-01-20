@@ -4,19 +4,15 @@ SOURCES = $(wildcard *.c)
 
 OBJECTS = $(SOURCES:.c=.o)
 
-HEADERS = $(wildcard *.h)
+HEADER = $(wildcard *.h)
 
 CFLAGS += -Wall -Wextra -Werror
 
 
 all: $(OBJECTS) $(NAME)
 
-
-$(OBJECTS):$(SOURCES)
-	gcc -c $(SOURCES) $(CFLAGS)
-
 $(NAME):
-	gcc -o $(NAME) $(OBJECTS) $(CFLAGS)
+	ar rc $(NAME) $(OBJECTS) $(HEADER)
 
 clean:
 	/bin/rm -f *.o

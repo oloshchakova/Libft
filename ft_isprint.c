@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_printable.c                              :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oloshcha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/03 23:25:26 by oloshcha          #+#    #+#             */
-/*   Updated: 2022/12/03 23:25:28 by oloshcha         ###   ########.fr       */
+/*   Created: 2023/01/20 18:49:18 by oloshcha          #+#    #+#             */
+/*   Updated: 2023/01/20 18:49:22 by oloshcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isprint(char *str)
+int	ft_isprint(int c)
 {
-	int	i;
-
-	i = 0;
-	if (!str[i])
+	if (c < 32 || c > 126)
+		return (0);
+	else
 		return (1);
-	while (str[i])
-	{
-		if (str[i] < 32 || str[i] > 126)
-			return (0);
-		i++;
-	}
-	return (1);
 }

@@ -9,15 +9,16 @@
 /*   Updated: 2023/01/18 19:34:11 by oloshcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
 void	bzero(void *s, size_t n)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (i < n)
 	{
-		*s = '\0';
+		*(char *)s = '\0';
 		s++;
 		i++;
 	}
