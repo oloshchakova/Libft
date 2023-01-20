@@ -9,7 +9,7 @@ HEADERS = $(wildcard *.h)
 CFLAGS += -Wall -Wextra -Werror
 
 
-all: $(OBJECTS) $(NAME) norminette
+all: $(OBJECTS) $(NAME)
 
 
 $(OBJECTS):$(SOURCES)
@@ -17,9 +17,6 @@ $(OBJECTS):$(SOURCES)
 
 $(NAME):
 	gcc -o $(NAME) $(OBJECTS) $(CFLAGS)
-
-norminette:
-	norminette $(SOURCES) $(HEADERS)
 
 clean:
 	/bin/rm -f *.o
