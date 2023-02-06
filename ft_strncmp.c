@@ -16,12 +16,16 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	size_t	i;
 
 	i = 0;
+	if (n == 0)
+		return (0);
 	while (s1[i] != '\0' && i < n)
 	{
 		if (s1[i] != s2[i])
-			return (s1[i] - s2[i]);
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 		i++;
 	}
+	if (s1[i] == '\0')
+		return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 	return (0);
 }
 /*
@@ -61,5 +65,8 @@ int main(void)
 	diff2 = strncmp(s1, s2, 3);
 	printf("diff %s and %s  = %d \n", s1, s2, diff);
 	printf("diff2 %s and %s  = %d", s1, s2, diff2);
+	//ft_print_result(ft_strncmp("test", "testss", 7));
+	//ft_print_result(ft_strncmp("test\200", "test\0", 6));
+	printf("%d", ft_strncmp("", "1", 0));
 	return (0);
 }*/

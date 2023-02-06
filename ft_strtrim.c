@@ -9,53 +9,59 @@
 /*   Updated: 2023/01/18 19:49:48 by oloshcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-char  *ft_strchr(const char *s, int c)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-  int i;
-  
-  i = 0;
-  while (*s)
-  {
-    if (s[i] == c)
-     
-    i++;
-      
-  }
-  return (0);
-}
+	char	*res;
+	int		start;
+	int		end;
+	int		i;
 
-char    *ft_strtrim(char const *s, char const *set)
-{
-    int    i;
-    int	j;
-    char *res;
-
-    i = 0;
-    j = 0;
-    if (*s == '\0' || *set == '\0' || (res = (char *)malloc(strlen(s) * sizeof(char))))
-        return (0);
-    while (*s)
-    {
-        while (set[i])
-        {
-            if (*s == set[i])
-                s++;
-            i++;
-        }
-        if (set[i] == '\0')
-            break ;
-    }
-    i = strlen(s);
-    while (i > 0 && s[i] == set[j])
-    {
-        i--;
-    }
+	start = 0;
+	end = ft_strlen(s1);
+	while (s1[start] && ft_strchr(set, s1[start]) != 0)
+	{
+		start++;
+	}
+	while (s1[start] && end > 0 && ft_strchr(set, s1[end - 1]) != 0)
+	{
+		end--;
+	}
+	res = (char *)malloc(sizeof(char) * (end - start + 1));
+	if (!res)
+		return (0);
+	i = 0;
+	while (start < end)
+		res[i++] = s1[start++];
+	res[i] = '\0';
+	return (res);
 }
 
 /*
-int main() {
+#include <stdlib.h>
+#include <unistd.h>
+void	ft_print_result(char const *s)
+{
+	int		len;
 
-  printf("%s", ft_strtrim("aachiacb", "abc"));
+	len = 0;
+	while (s[len])
+		len++;
+	write(1, s, len);
+}
+
+int main() {
+	//printf("%s", ft_strtrim("   xxx   xxx", " x"));
+    //printf("%s", ft_strtrim("", "123"));
+    //printf("%s", ft_strtrim("abcdba", "acb"));
+    char    *strtrim;
+    char s1[] = "lorem \n ipsum \t dolor \n sit \t amet";
+    if (!(strtrim = ft_strtrim(s1, " ")))
+            ft_print_result("NULL");
+    else
+            ft_print_result(strtrim);
+    if (strtrim == s1)
+            ft_print_result("\nA new string was not returned");
   return 0;
 }*/
