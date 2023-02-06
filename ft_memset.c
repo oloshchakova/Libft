@@ -11,15 +11,41 @@
 /* ************************************************************************** */
 #include "libft.h"
 
-void	*memset(void *s, int c, size_t n)
+void	*ft_memset(void *s, int c, size_t n)
 {
 	size_t	i;
+	char	*ptr;
 
+	ptr = (char *)s;
 	i = 0;
 	while (i < n)
 	{
-		((unsigned char *)s)[i] = c;
+		ptr[i] = c;
 		i++;
 	}
-	return (s);
+	return (ptr);
 }
+/*
+int main (void)
+{
+	char arr[20] = {97, 97, 97, 97};
+	char c;
+	char d;
+
+	printf("[%d]\n", *(int *)arr);
+	c = 'a';
+	d = 'b';
+	//memset(arr, c, 10);
+	for(int i = 0; i < 32; ++i)
+	{
+		printf("index = %d, value = [%d]\n", i, arr[i]);
+	}
+	ft_memset(arr + 10, d, 10);
+
+
+	for(int i = 0; i < 32; ++i)
+	{
+		printf("index = %d, value = [%d]\n", i, arr[i]);
+	}
+	return (0);
+}*/

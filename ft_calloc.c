@@ -11,15 +11,18 @@
 /* ************************************************************************** */
 #include "libft.h"
 
-void	*calloc(size_t nmemb, size_t size)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	size_t	tot_size;
-	void	*dst;
+	long long	tot_size;
+	void		*p;
 
 	tot_size = size * nmemb;
-	dst = (void *)malloc(tot_size);
-	if (!(dst))
-		return (0);
-	ft_memset(dst, 0, tot_size);
-	return (dst);
+	if (tot_size / size != nmemb)
+		return (NULL);
+	p = (void *)malloc(tot_size);
+	if (p != NULL)
+	{
+		ft_memset(p, 0, tot_size);
+	}
+	return (p);
 }
