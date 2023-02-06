@@ -29,7 +29,10 @@ The strlen() function calculates the length of the string pointed to by
        s, excluding the terminating null byte ('\0').
        
 ===================================================================================
-• memset											
+• memset	
+https://www.geeksforgeeks.org/memset-c-example/
+https://stackoverflow.com/questions/18851835/create-my-own-memset-function-in-c/18851921#18851921	
+https://www.youtube.com/watch?v=Njsn5HAnAnk									
 NAME
        memset - fill memory with a constant byte
 
@@ -111,58 +114,7 @@ RETURN VALUE
 
 ===================================================================================
 • strlcpy				C02_ex10						
-NAME
-     strlcpy, strlcat — size-bounded string copying and concatenation
-
-LIBRARY
-     Utility functions from BSD systems (libbsd, -lbsd)
-
-SYNOPSIS
-     #include <string.h>
-     (See libbsd(7) for include usage.)
-
-     size_t
-     strlcpy(char *dst, const char *src, size_t size);
-
-     size_t
-     strlcat(char *dst, const char *src, size_t size);
-
-DESCRIPTION
-     The strlcpy() and strlcat() functions copy and concatenate strings re‐
-     spectively.  They are designed to be safer, more consistent, and less er‐
-     ror prone replacements for strncpy(3) and strncat(3).  Unlike those func‐
-     tions, strlcpy() and strlcat() take the full size of the buffer (not just
-     the length) and guarantee to NUL-terminate the result (as long as size is
-     larger than 0 or, in the case of strlcat(), as long as there is at least
-     one byte free in dst).  Note that a byte for the NUL should be included
-     in size.  Also note that strlcpy() and strlcat() only operate on true “C”
-     strings.  This means that for strlcpy() src must be NUL-terminated and
-     for strlcat() both src and dst must be NUL-terminated.
-
-     The strlcpy() function copies up to size - 1 characters from the NUL-ter‐
-     minated string src to dst, NUL-terminating the result.
-
-     The strlcat() function appends the NUL-terminated string src to the end
-     of dst.  It will append at most size - strlen(dst) - 1 bytes, NUL-termi‐
-     nating the result.
-
-RETURN VALUES
-     The strlcpy() and strlcat() functions return the total length of the
-     string they tried to create.  For strlcpy() that means the length of src.
-     For strlcat() that means the initial length of dst plus the length of
-     src.  While this may seem somewhat confusing, it was done to make trunca‐
-     tion detection simple.
-
-     Note, however, that if strlcat() traverses size characters without find‐
-     ing a NUL, the length of the string is considered to be size and the des‐
-     tination string will not be NUL-terminated (since there was no space for
-     the NUL).  This keeps strlcat() from running off the end of a string.  In
-     practice this should not happen (as it means that either size is incor‐
-     rect or that dst is not a proper “C” string).  The check exists to pre‐
-     vent potential security problems in incorrect code.
-
-===================================================================================
-• strlcat			C03_ex05							
+• strlcat			       C03_ex05							
 NAME
      strlcpy, strlcat — size-bounded string copying and concatenation
 
@@ -247,23 +199,169 @@ RETURN VALUE
        '\0', these functions return a pointer to the terminator.
 ===================================================================================
 • strncmp +C03										
+NAME
+       strcmp, strncmp - compare two strings
 
+SYNOPSIS
+       #include <string.h>
+
+       int strcmp(const char *s1, const char *s2);
+
+       int strncmp(const char *s1, const char *s2, size_t n);
+
+DESCRIPTION
+       The strcmp() function compares the two strings s1 and s2.  The locale is not taken into account (for a locale-
+       aware comparison, see strcoll(3)).  It returns an integer less than, equal to, or greater than zero if  s1  is
+       found, respectively, to be less than, to match, or be greater than s2.
+
+       The strncmp() function is similar, except it compares only the first (at most) n bytes of s1 and s2.
+
+RETURN VALUE
+       The strcmp() and strncmp() functions return an integer less than, equal to, or greater than zero if s1 (or the
+       first n bytes thereof) is found, respectively, to be less than, to match, or be greater than s2.
 ===================================================================================
 • memchr
+NAME
+       memchr, memrchr, rawmemchr - scan memory for a character
+
+SYNOPSIS
+       #include <string.h>
+
+       void *memchr(const void *s, int c, size_t n);
+
+DESCRIPTION
+       The  memchr()  function scans the initial n bytes of the memory area pointed to by s for the first instance of
+       c.  Both c and the bytes of the memory area pointed to by s are interpreted as unsigned char.
+
+RETURN VALUE
+       The  memchr() function return a pointer to the matching byte or NULL if the character does not
+       occur in the given memory area.
 
 ===================================================================================
 • memcmp
+NAME
+       memcmp - compare memory areas
 
+SYNOPSIS
+       #include <string.h>
+
+       int memcmp(const void *s1, const void *s2, size_t n);
+
+DESCRIPTION
+       The  memcmp()  function  compares the first n bytes (each interpreted as unsigned char) of the memory areas s1
+       and s2.
+
+RETURN VALUE
+       The memcmp() function returns an integer less than, equal to, or greater than zero if the first n bytes of  s1
+       is found, respectively, to be less than, to match, or be greater than the first n bytes of s2.
+
+       For  a  nonzero  return  value, the sign is determined by the sign of the difference between the first pair of
+       bytes (interpreted as unsigned char) that differ in s1 and s2.
+
+       If n is zero, the return value is zero.
 ===================================================================================
 • strnstr											
+SYNOPSIS
+#include <string.h>
+char 	*strstr (const char *big, const char *little)
+char 	*strnstr (const char *big, const char *little, size_t len)
 
+DESCRIPTION
+The strstr function locates the first occurrence of the null-terminated string \c little in the null-terminated string \c big.
+The strnstr function locates the first occurrence of the null-terminated string \c little in the string \c big, where not more than \c len characters are searched. Characters that appear after a \0 character are not searched. Since the strnstr function is a FreeBSD specific API, it should only be used when portability is not a concern.
+
+RETURN VALUE
+If little is an empty string, big is returned; if little occurs nowhere in big, NULL is returned; otherwise a pointer to the first character of the first occurrence of little is returned.
+
+Example - Locate a substring in a string
+Problem
+The following sets the pointer ptr to the "Bar Baz" portion of largestring:
+Workings
+const char *largestring = "Foo Bar Baz";
+const char *smallstring = "Bar";
+char *ptr;
+ 
+ptr = strstr(largestring, smallstring);
 ===================================================================================
 • atoi +C04_ex03										
+NAME
+       atoi, atol, atoll - convert a string to an integer
 
+SYNOPSIS
+       #include <stdlib.h>
+
+       int atoi(const char *nptr);
+
+DESCRIPTION
+       The atoi() function converts the initial portion of the string pointed to by nptr to int.  The behavior is the
+       same as
+
+           strtol(nptr, NULL, 10);
+
+       except that atoi() does not detect errors.
+
+       The atol() and atoll() functions behave the same as atoi(), except that they convert the  initial  portion  of
+       the string to their return type of long or long long.
+
+RETURN VALUE
+       The converted value.
 ===================================================================================
 malloc():
-• calloc											
-• strdup											
+• calloc
+NAME
+       malloc, free, calloc, realloc - allocate and free dynamic memory
+
+SYNOPSIS
+       #include <stdlib.h>
+
+       void *malloc(size_t size);
+       void free(void *ptr);
+       void *calloc(size_t nmemb, size_t size);
+
+DESCRIPTION
+       The  malloc()  function allocates size bytes and returns a pointer to the allocated memory.  The memory is not
+       initialized.  If size is 0, then malloc() returns either NULL, or a unique pointer value  that  can  later  be
+       successfully passed to free().
+
+       The free() function frees the memory space pointed to by ptr, which must have been returned by a previous call
+       to malloc(), calloc(), or realloc().  Otherwise, or if free(ptr) has already been called before, undefined be‐
+       havior occurs.  If ptr is NULL, no operation is performed.
+
+       The calloc() function allocates memory for an array of nmemb elements of size bytes each and returns a pointer
+       to the allocated memory.  The memory is set to zero.  If nmemb or size is  0,  then  calloc()  returns  either
+       NULL,  or  a  unique  pointer value that can later be successfully passed to free().  If the multiplication of
+       nmemb and size would result in integer overflow, then calloc() returns an  error.   By  contrast,  an  integer
+       overflow  would  not  be detected in the following call to malloc(), with the result that an incorrectly sized
+       block of memory would be allocated:
+
+           malloc(nmemb * size);
+
+RETURN VALUE
+       The malloc() and calloc() functions return a pointer to the allocated memory, which is  suitably  aligned  for
+       any  built-in type.  On error, these functions return NULL.  NULL may also be returned by a successful call to
+       malloc() with a size of zero, or by a successful call to calloc() with nmemb or size equal to zero.
+
+       The free() function returns no value.											
+• strdup
+
+NAME
+       strdup, strndup, strdupa, strndupa - duplicate a string
+
+SYNOPSIS
+       #include <string.h>
+
+       char *strdup(const char *s);
+
+DESCRIPTION
+       The  strdup() function returns a pointer to a new string which is a duplicate of the string s.  Memory for the
+       new string is obtained with malloc(3), and can be freed with free(3).
+
+RETURN VALUE
+       On success, the strdup() function returns a pointer to the duplicated string.  It returns NULL if insufficient
+       memory was available, with errno set to indicate the cause of the error.
+
+ERRORS
+       ENOMEM Insufficient memory available to allocate duplicate string.
 ===================================================================================
 additional functions:
 ===================================================================================
@@ -320,6 +418,10 @@ ft_putendl_fd
 ===================================================================================	
 ft_putnbr_fd
 ===================================================================================	
+NORMINETTE
+https://github.com/42School/norminette
+
+
 
 TESTING
   .   .   .   .  .   .  .   .  .   .  .   .  .   .  .   .  .   .  .   .  .   .
@@ -328,5 +430,6 @@ https://github.com/alelievr/libft-unit-test
   .   .   .   .  .   .  .   .  .   .  .   .  .   .  .   .  .   .  .   .  .   .
 .   .   .   .  .   .  .   .  .   .  .   .  .   .  .   .  .   .  .   .  .   .
 https://github.com/0x050f/libft-war-machine
+bash grademe.sh ft_atoi -f ft_strlen -n
   .   .   .   .  .   .  .   .  .   .  .   .  .   .  .   .  .   .  .   .  .   .
 .   .   .   .  .   .  .   .  .   .  .   .  .   .  .   .  .   .  .   .  .   .
