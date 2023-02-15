@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oloshcha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/20 12:02:27 by oloshcha          #+#    #+#             */
-/*   Updated: 2023/01/20 12:02:29 by oloshcha         ###   ########.fr       */
+/*   Created: 2023/01/20 12:02:58 by oloshcha          #+#    #+#             */
+/*   Updated: 2023/01/20 12:03:00 by oloshcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	unsigned int	len;
-	unsigned int	i;
-	char			*str;
+	int	i;
+	int	len;
 
 	len = ft_strlen(s);
-	str = (char *)malloc(sizeof(char) * len + 1);
-	if (!str)
-		return (0);
 	i = 0;
 	while (i < len)
 	{
-		str[i] = (*f)(i, s[i]);
+		(*f)(i, (s + i));
 		i++;
 	}
-	str[i] = '\0';
-	return (str);
 }
 /*
 #include <stdlib.h>
@@ -45,7 +39,7 @@ void	ft_print_result(char const *s)
 	write(1, s, len);
 }
 
-char	mapi(unsigned int i, char c)
+void	iter(unsigned int i, char *c)
 {
 	static int indexArray[11] = {0};
 
@@ -53,24 +47,19 @@ char	mapi(unsigned int i, char c)
 		write(1, "wrong index\n", 12);
 	else
 		indexArray[i] = 1;
-	if (c >= 'a' && c <= 'z')
-		return (c - 32);
-	else if (c >= 'A' && c <= 'Z')
-		return (c + 32);
-	else
-		return (c);
+	if (*c >= 'a' && *c <= 'z')
+		*c = *c - 32;
+	else if (*c >= 'A' && *c <= 'Z')
+		*c = *c + 32;
 }
 
 int		main()
 {
-	char	str[12] = "LoReM iPsUm";
-    char	*strmapi;
+	char	*str;
 
-	strmapi = ft_strmapi(str, &mapi);
-	ft_print_result(strmapi);
-	if (strmapi == str)
-			ft_print_result("\nA new string was not returned");
-	if (strmapi[11] != '\0')
-			ft_print_result("\nString is not null terminated");
+	str = (char *)malloc(sizeof(*str) * 12);
+	strcpy(str, "LoReM iPsUm");
+	ft_striteri(str, &iter);
+	ft_print_result(str);
 	return (0);
 }*/
