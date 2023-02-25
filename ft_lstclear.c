@@ -11,23 +11,22 @@
 /* ************************************************************************** */
 /*
 Parameters       lst: The address of a pointer to a node.
-                 del: The address of the function used to delete the content of the node.
+                 del: The address of the function used 
+                 to delete the content of the node.
 Return value     None
 External functs. free
-Description      Deletes and frees the given node and every successor of that node, 
-                 using the function ’del’ and free(3). Finally, the pointer to the
-                 list must be set to NULL.
+Description      Deletes and frees the given node and every successor 
+				 of that node, using the function ’del’ and free(3).
+				 Finally, the pointer to the list must be set to NULL.
 
 */
 #include "libft.h"
 
 void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-    if (lst == NULL || del == NULL)
-        return;
-    if ((*lst)->next != NULL)
-    {
-        ft_lstclear(&((*lst)->next), del);
-    }
-    ft_lstdelone(*lst, del);
+	if (lst == NULL || del == NULL)
+		return ;
+	if ((*lst)->next != NULL)
+		ft_lstclear(&((*lst)->next), del);
+	ft_lstdelone(*lst, del);
 }

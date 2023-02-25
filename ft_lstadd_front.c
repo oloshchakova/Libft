@@ -20,13 +20,13 @@ Description Adds the node ’new’ at the beginning of the list.
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-    if (new == NULL || lst == NULL)
-        return;
-    if (*lst == NULL)
-    {
-        *lst = new;
-        return;
-    }
-    new.next = *lst;
-    *lst = new;
+	if (new == NULL || lst == NULL)
+		return ;
+	if (*lst == NULL)
+	{
+		*lst = new;
+		return ;
+	}
+	new.next = *lst;
+	*lst = new;
 }

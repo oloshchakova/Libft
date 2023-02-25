@@ -33,7 +33,7 @@ SOURCES = ft_isalpha.c \
 			ft_putchar_fd.c \
 			ft_putstr_fd.c \
 			ft_putendl_fd.c \
-			ft_putnbr_fd.c \
+			ft_putnbr_fd.c
 			
 BONUSES = ft_lstnew \
 			ft_lstadd_front \
@@ -43,7 +43,7 @@ BONUSES = ft_lstnew \
 			ft_lstdelone \
 			ft_lstclear \
 			ft_lstiter \
-			ft_lstmap \
+			ft_lstmap
 
 OBJECTS = $(SOURCES:.c=.o)
 
@@ -52,7 +52,7 @@ HEADER = $(wildcard *.h)
 CFLAGS += -Wall -Wextra -Werror
 
 
-all: $(OBJECTS) $(NAME)
+all bonus: $(OBJECTS) $(NAME)
 
 $(NAME):
 	ar rc $(NAME) $(OBJECTS) $(HEADER)
@@ -64,3 +64,7 @@ fclean: clean
 	/bin/rm -f $(NAME) $(OBJECTS)
 	
 re: fclean all
+
+so:
+	gcc -nostartfiles -fPIC $(CFLAGS) $(SOURCES)
+	gcc -nostartfiles -shared -o libft.so $(OBJECTS)
