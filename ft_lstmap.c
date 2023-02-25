@@ -6,7 +6,7 @@
 /*   By: oloshcha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 20:13:47 by oloshcha          #+#    #+#             */
-/*   Updated: 2023/02/09 20:13:51 by oloshcha         ###   ########.fr       */
+/*   Updated: 2023/02/26 00:10:19 by oloshcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*
@@ -28,5 +28,6 @@ Description      Iterates the list ’lst’ and applies the function
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	if (f == NULL || lst == NULL || del == NULL)
-		return ;
+		return (NULL);
+	return (NULL);
 }

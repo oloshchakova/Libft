@@ -1,7 +1,7 @@
 NAME = libft.a
 
 SOURCES = ft_isalpha.c \
-			ft_isdigit.c \ 
+			ft_isdigit.c \
 			ft_isalnum.c \
 			ft_isascii.c \
 			ft_isprint.c \
@@ -33,38 +33,43 @@ SOURCES = ft_isalpha.c \
 			ft_putchar_fd.c \
 			ft_putstr_fd.c \
 			ft_putendl_fd.c \
-			ft_putnbr_fd.c
+			ft_putnbr_fd.c \
 			
-BONUSES = ft_lstnew \
-			ft_lstadd_front \
-			ft_lstsize \
-			ft_lstlast \
-			ft_lstadd_back \
-			ft_lstdelone \
-			ft_lstclear \
-			ft_lstiter \
-			ft_lstmap
+BONUSES = ft_lstnew.c \
+			ft_lstadd_front.c \
+			ft_lstsize.c \
+			ft_lstlast.c \
+			ft_lstadd_back.c \
+			ft_lstdelone.c \
+			ft_lstclear.c \
+			ft_lstiter.c \
+			ft_lstmap.c \
 
 OBJECTS = $(SOURCES:.c=.o)
+
+OBJECTS_BONUSES = $(BONUSES:.c=.o)
 
 HEADER = $(wildcard *.h)
 
 CFLAGS += -Wall -Wextra -Werror
 
 
-all bonus: $(OBJECTS) $(NAME)
+all: $(OBJECTS) $(NAME)
 
 $(NAME):
 	ar rc $(NAME) $(OBJECTS) $(HEADER)
+
+bonus: $(OBJECTS_BONUSES)
+	ar r $(NAME) $(OBJECTS_BONUSES) $(HEADER)
 
 clean:
 	/bin/rm -f *.o
 
 fclean: clean
-	/bin/rm -f $(NAME) $(OBJECTS)
+	/bin/rm -f $(NAME) $(OBJECTS) $(OBJECTS_BONUSES)
 	
 re: fclean all
 
 so:
-	gcc -nostartfiles -fPIC $(CFLAGS) $(SOURCES)
-	gcc -nostartfiles -shared -o libft.so $(OBJECTS)
+	gcc -nostartfiles -fPIC $(CFLAGS) $(SOURCES) $(BONUSES)
+	gcc -nostartfiles -shared -o libft.so $(OBJECTS) $(OBJECTS_BONUSES)

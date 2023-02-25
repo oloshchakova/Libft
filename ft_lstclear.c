@@ -6,7 +6,7 @@
 /*   By: oloshcha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 20:13:10 by oloshcha          #+#    #+#             */
-/*   Updated: 2023/02/09 20:13:12 by oloshcha         ###   ########.fr       */
+/*   Updated: 2023/02/26 00:20:03 by oloshcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*
@@ -26,7 +26,10 @@ void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
 	if (lst == NULL || del == NULL)
 		return ;
-	if ((*lst)->next != NULL)
-		ft_lstclear(&((*lst)->next), del);
+	if (*lst == NULL)
+		return ;
+	ft_lstclear(&((*lst)->next), del);
 	ft_lstdelone(*lst, del);
+	*lst = NULL;
+	return ;
 }
