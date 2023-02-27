@@ -18,6 +18,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	int		end;
 	int		i;
 
+	if (s1 == NULL || set == NULL)
+		return (NULL);
 	start = 0;
 	end = ft_strlen(s1);
 	while (s1[start] && ft_strchr(set, s1[start]) != 0)
