@@ -9,6 +9,37 @@
 /*   Updated: 2023/01/11 15:48:25 by oloshcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+/*
+NAME
+     strlcat — size-bounded string copying and concatenation
+
+DESCRIPTION
+     The strlcat() function concatenates strings. Unlike strncat(),strlcat() 
+     takes the full size of the buffer (not just the length) and guarantee to
+     NUL-terminate the result (in the case of strlcat(), as long as there is at
+     least one byte free in dst). Note that a byte for the NUL should be 
+     included in size. Also note that strlcat() only operates on true “C” 
+     strings. This means that both src and dst must be NUL-terminated.
+
+     The strlcat() function appends the NUL-terminated string src to the end
+     of dst.  It will append at most size - strlen(dst) - 1 bytes, NUL-termi‐
+     nating the result.
+
+RETURN VALUES
+     The strlcat() functions return the total length of the
+     string they tried to create.
+     For strlcat() that means the initial length of dst plus the length of
+     src.  While this may seem somewhat confusing, it was done to make trunca‐
+     tion detection simple.
+
+     Note, however, that if strlcat() traverses size characters without find‐
+     ing a NUL, the length of the string is considered to be size and the des‐
+     tination string will not be NUL-terminated (since there was no space for
+     the NUL).  This keeps strlcat() from running off the end of a string.  In
+     practice this should not happen (as it means that either size is incor‐
+     rect or that dst is not a proper “C” string).  The check exists to pre‐
+     vent potential security problems in incorrect code.
+*/
 #include "libft.h"
 #include <stdlib.h>
 
@@ -19,6 +50,8 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	size_t	i;
 	size_t	j;
 
+	if (dst == NULL && size == 0)
+		return (ft_strlen(src));
 	len_dst = ft_strlen(dst);
 	len_src = ft_strlen(src);
 	i = len_dst;

@@ -9,6 +9,20 @@
 /*   Updated: 2023/01/18 19:31:48 by oloshcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+/*
+NAME
+       memmove - copy memory area
+
+DESCRIPTION
+       The memmove() function copies n bytes from memory area src to memory
+       area dest. The memory areas may overlap: copying takes place as though
+       the bytes in src are first copied into a temporary array that does not
+       overlap src or dest, and the bytes are then copied from the temporary
+       array to dest.
+
+RETURN VALUE
+       The memmove() function returns a pointer to dest.
+*/
 #include "libft.h"
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
@@ -16,24 +30,40 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	size_t	i;
 	char	*ptr_dest;
 	char	*ptr_src;
-	char	tmp[2000];
 
-	i = 0;
+	if (dest == NULL && src == NULL)
+		return (NULL);
 	ptr_dest = (char *)dest;
 	ptr_src = (char *)src;
-	while (i < n)
+	if (ptr_dest <= ptr_src)
 	{
-		tmp[i] = ptr_src[i];
-		i++;
+		i = 0;
+		while (i < n)
+		{
+			*(ptr_dest + i) = *(ptr_src + i);
+			i++;
+		}
 	}
-	i = 0;
-	while (i < n)
+	else if (ptr_dest > ptr_src)
 	{
-		ptr_dest[i] = tmp[i];
-		i++;
+		while (n-- > 0)
+			*(ptr_dest + n) = *(ptr_src + n);
 	}
 	return (dest);
 }
+/*
+int main(void)
+{
+    char    src[] = "abcdef0000";
+    char    *dest;
+
+    dest = src + 3;
+    ft_memmove(dest, src, 4);
+    printf("%s", dest);
+    return (0);
+}
+*/
+
 /*
 int main(void)
 {
@@ -45,6 +75,3 @@ int main(void)
 	printf("%s", dest);
 	return (0);
 }*/
-//really strange function with overlapping. i didnt get how it exactly works...
-//my  : llllllllum dolor sit amet
-//res : lorem ipum dolor sit a
