@@ -62,29 +62,27 @@ char	**ft_split(char const *str, char c)
 {
 	char		**res;
 	int			i;
-	int			j;
 	int			nb_words;
 	int			len_wrd;
 
-	i = 0;
+	if (str == NULL)
+		return (NULL);
 	nb_words = count_words(str, c);
 	res = (char **)malloc(sizeof(char *) * (nb_words + 1));
 	if (!res)
 		return (NULL);
 	res[nb_words] = NULL;
-	if (str[i] == '\0')
-		return (res);
-	j = 0;
+	i = 0;
+	nb_words = 0;
 	while (str[i] != '\0')
 	{
 		while (str[i] == c)
 			i++;
-		len_wrd = count_ch(str, i, c);
-		if (len_wrd == 0)
+		if (str[i] == '\0')
 			return (res);
-		res[j] = mem_str(str, i, len_wrd);
+		len_wrd = count_ch(str, i, c);
+		res[nb_words++] = mem_str(str, i, len_wrd);
 		i += len_wrd;
-		j++;
 	}
 	return (res);
 }
@@ -97,4 +95,16 @@ int main(void)
     res = ft_split(str, ',');
     printf("%s", res);
     return (0);
+    
 }*/
+/*
+nt main() {
+  char    **expected = ft_split("\0aa\0bbb", '\0');
+  for (int i = 0; expected[i]; i++)
+  {
+    if (expected[i] != NULL)
+      printf("TEST FAILED");
+  }
+  return 0;
+}
+*/
