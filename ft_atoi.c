@@ -9,7 +9,14 @@
 /*   Updated: 2023/02/09 20:09:11 by oloshcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+/*
+DESCRIPTION
+       The atoi() function converts the initial portion of the string pointed
+       to by nptr to int.
 
+RETURN VALUE
+       The converted value.
+*/
 int	ft_isspace(char *str)
 {
 	int	i;
