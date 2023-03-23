@@ -9,6 +9,17 @@
 /*   Updated: 2023/01/20 12:00:44 by oloshcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+/*
+PARAMETERS 		s: The string to be split.
+				c: The delimiter character.
+RETURN VALUE	The array of new strings resulting from the split.
+				NULL if the allocation fails.
+EXTERNAL FUN.	malloc, free
+DESCRIPTION		Allocates (with malloc(3)) and returns an array
+				of strings obtained by splitting ’s’ using the
+				character ’c’ as a delimiter. The array must end
+				with a NULL pointer.
+*/
 #include "libft.h"
 
 int	count_words(char const *s, char c)

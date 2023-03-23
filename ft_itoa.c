@@ -9,6 +9,15 @@
 /*   Updated: 2023/01/20 12:01:26 by oloshcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+/*
+PARAMETERS		n: the integer to convert.
+RETURN VALUE	The string representing the integer.
+				NULL if the allocation fails.
+EXTERNAL FUN.   malloc
+DESCRIPTION		Allocates (with malloc(3)) and returns a string
+				representing the integer received as an argument.
+				Negative numbers must be handled.
+*/
 #include "libft.h"
 
 int	cnt_len(int n)
