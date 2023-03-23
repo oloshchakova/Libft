@@ -9,6 +9,16 @@
 /*   Updated: 2023/01/20 12:03:00 by oloshcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+/*
+PARAMETERS		s: The string on which to iterate.
+				f: The function to apply to each character.
+RETURN VALUE	None
+EXTERNAL FUN.   None
+DESCRIPTION		Applies the function ’f’ on each character of
+				the string passed as argument, passing its index
+				as first argument. Each character is passed by
+				address to ’f’ to be modified if necessary.			
+*/
 #include "libft.h"
 
 void	ft_striteri(char *s, void (*f)(unsigned int, char*))

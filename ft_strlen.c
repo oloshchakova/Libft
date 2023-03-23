@@ -9,6 +9,14 @@
 /*   Updated: 2022/11/22 23:14:33 by oloshcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+/*
+DESCRIPTION
+       The strlen() function calculates the length of the string pointed to by
+       s, excluding the terminating null byte ('\0').
+
+RETURN VALUE
+       The length of the string pointed to by s.
+*/
 #include "libft.h"
 
 size_t	ft_strlen(const char *s)

@@ -9,6 +9,18 @@
 /*   Updated: 2023/01/18 19:31:28 by oloshcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+/*
+DESCRIPTION
+				The strnstr function locates the first occurrence of the
+				null-terminated string \c little in the string \c big,
+				where not more than \c len characters are searched. 
+				Characters that appear after a \0 character are not searched.
+RETURN VALUE
+				If little is an empty string, big is returned; if little 
+				occurs nowhere in big, NULL is returned; otherwise a pointer 
+				to the first character of the first occurrence of little is 
+				returned.
+*/
 #include "libft.h"
 
 char	*ft_strnstr(const char *s1, const char *s2, size_t n)

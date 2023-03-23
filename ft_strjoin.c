@@ -9,6 +9,15 @@
 /*   Updated: 2023/01/18 19:34:33 by oloshcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+/*
+PARAMETERS           s1: The prefix string.
+                     s2: The suffix string.
+RETURN VALUE         The new string.
+                     NULL if the allocation fails.
+EXTERNAL FUN.        malloc
+DESCRIPTION          Allocates (with malloc(3)) and returns a new string, which
+					 is the result of the concatenation of ’s1’ and ’s2’.
+*/
 #include "libft.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
