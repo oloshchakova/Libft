@@ -9,6 +9,13 @@
 /*   Updated: 2023/01/20 12:03:25 by oloshcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+/*
+PARAMETERS		c: The character to output.
+				fd: The file descriptor on which to write.
+RETURN VALUE	None
+EXTERNAL FUN.	write
+DESCRIPTION		Outputs the character ’c’ to the given file descriptor
+*/
 #include "libft.h"
 
 void	ft_putchar_fd(char c, int fd)

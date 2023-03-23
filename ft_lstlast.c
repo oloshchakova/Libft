@@ -10,10 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 /*
-Parameters       lst: The beginning of the list.
-Return value     Last node of the list
-External functs. None
-Description      Returns the last node of the list.
+PARAMETERS   	lst: The beginning of the list.
+RETURN VALUE   	Last node of the list
+EXTERNAL FUN. 	None
+DESCRIPTION   	Returns the last node of the list.
 */
 #include "libft.h"
 

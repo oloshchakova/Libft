@@ -9,6 +9,14 @@
 /*   Updated: 2023/01/20 12:04:16 by oloshcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+/*
+PARAMETERS 		s: The string to output.
+				fd: The file descriptor on which to write.
+RETURN VALUE	None
+EXTERNAL FUN.	write
+DESCRIPTION		Outputs the string ’s’ to the given file descriptor
+				followed by a newline.
+*/
 #include "libft.h"
 
 void	ft_putendl_fd(char *s, int fd)
